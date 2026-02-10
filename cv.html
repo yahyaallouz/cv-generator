@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your CV</title>
+    <link rel="stylesheet" href="style.css?v=1">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="cv-toolbar">
+        <button id="edit-cv" class="btn-edit"><i class="fas fa-edit"></i> Edit CV</button>
+        <button id="download-pdf" class="btn-download"><i class="fas fa-download"></i> Download PDF</button>
+    </div>
+
+    <div class="cv-preview-container">
+        <div id="cv-template">
+            <header class="cv-header">
+                <img src="https://placehold.co/150x150?text=Profile+Photo" alt="Profile Photo" id="profile-pic-preview"
+                    class="profile-pic">
+                <div class="header-info">
+                    <h1 id="preview-name">Your Name</h1>
+                    <div class="contact-info">
+                        <span id="preview-email-container"></span>
+                        <span id="preview-phone-container"></span>
+                        <span id="preview-location-container"></span>
+                    </div>
+                </div>
+            </header>
+
+            <main class="cv-body">
+                <section>
+                    <h2><i class="fas fa-user-tie"></i> Professional Summary</h2>
+                    <p id="preview-summary"></p>
+                </section>
+
+                <div class="cv-grid-container">
+                    <div class="cv-main-col">
+                        <section>
+                            <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+                            <div id="preview-experience"></div>
+                        </section>
+
+                        <section>
+                            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                            <div id="preview-education"></div>
+                        </section>
+                    </div>
+                    <div class="cv-side-col">
+                        <section>
+                            <h2><i class="fas fa-cogs"></i> Skills</h2>
+                            <div id="preview-skills" class="tag-list"></div>
+                        </section>
+
+                        <section>
+                            <h2><i class="fas fa-language"></i> Languages</h2>
+                            <div id="preview-languages" class="tag-list"></div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="cv.js"></script>
+</body>
+
+</html>
