@@ -2,7 +2,9 @@
 
 <div align="center">
   <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge&logo=github">
-  <img src="https://img.shields.io/badge/Design-Glassmorphism-blue?style=for-the-badge&logo=css3">
+  <a href="https://yahyaallouz.github.io/cv-generator/">
+    <img src="https://img.shields.io/badge/Live_Demo-Click_Here-orange?style=for-the-badge&logo=vercel">
+  </a>
   <br>
   <strong>Create a stunning, ATS-friendly resume in seconds with a modern, glass-morphic interface.</strong>
 </div>
