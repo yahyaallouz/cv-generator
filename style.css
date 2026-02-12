@@ -34,7 +34,8 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     min-height: 100vh;
-    padding: 20px 0;
+    padding: 20px 10px;
+    /* Reduced side padding for mobile */
 }
 
 @keyframes gradientBG {
@@ -101,6 +102,7 @@ a {
     margin-bottom: 8px;
     background: linear-gradient(135deg, var(--text-main) 0%, var(--primary-color) 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.03em;
     position: relative;
@@ -110,6 +112,7 @@ a {
 .pro-badge {
     background: linear-gradient(135deg, #f59e0b, #d97706);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 0.9rem;
     text-transform: uppercase;
@@ -187,6 +190,9 @@ a {
     border-bottom: 2px solid var(--bg-color);
     padding-bottom: 20px;
     margin-bottom: 24px;
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
+    gap: 15px;
 }
 
 .card h2 {
@@ -575,11 +581,109 @@ button {
     border: 1px solid #e2e8f0;
 }
 
+/* --- Responsive Media Queries --- */
+
+/* Tablet & Mobile */
+@media screen and (max-width: 900px) {
+    .form-container {
+        padding: 30px 20px;
+        margin: 10px auto;
+        border-radius: var(--radius-lg);
+    }
+
+    .card {
+        padding: 24px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn-generate,
+    .btn-clear {
+        width: 100%;
+        flex: auto;
+    }
+
+    /* CV Template Scaling for Tablet */
+    /* We want to keep the A4 ratio but scale it down to fit or allow scrolling */
+    .cv-preview-container {
+        padding: 0 10px;
+        overflow-x: auto;
+        /* Allow scrolling horizontally if needed */
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Mobile Specific */
+@media screen and (max-width: 600px) {
+    .app-header h1 {
+        font-size: 2rem;
+    }
+
+    .grid-col-2 {
+        grid-template-columns: 1fr;
+        /* Single column */
+        gap: 16px;
+    }
+
+    .cv-header {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 30px;
+        gap: 20px;
+    }
+
+    .profile-pic {
+        margin: 0 auto;
+    }
+
+    .contact-info {
+        justify-content: center;
+    }
+
+    .cv-grid-container {
+        grid-template-columns: 1fr;
+        /* Stack columns on mobile PREVIEW only */
+        gap: 30px;
+    }
+
+    /* On mobile, we might want to stack the sidebar below main content in the view 
+       BUT we must be careful. If the user wants to print, they might want the sidebar. 
+       However, for the *view*, stacking is better reading experience. 
+       The PDF generator will use the desktop width anyway. */
+
+    .header-info h1 {
+        font-size: 2rem;
+    }
+
+    .cv-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-edit,
+    .btn-download {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Form inputs */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+        font-size: 16px;
+        /* Prevent zoom on iOS */
+    }
+}
+
 /* --- Print / PDF Specifics --- */
 @media print {
     body {
         margin: 0;
         background: white;
+        padding: 0;
     }
 
     .cv-toolbar,
@@ -597,6 +701,27 @@ button {
     #cv-template {
         box-shadow: none;
         margin: 0;
+        /* Reset any mobile styles for print */
+        width: 210mm !important;
+        min-height: 297mm !important;
+    }
+
+    /* Enforce Desktop Grid for Print */
+    .cv-header {
+        grid-template-columns: auto 1fr !important;
+        text-align: left !important;
+    }
+
+    .cv-grid-container {
+        grid-template-columns: 7fr 3fr !important;
+    }
+
+    .profile-pic {
+        margin: 0 !important;
+    }
+
+    .contact-info {
+        justify-content: flex-start !important;
     }
 
     @page {

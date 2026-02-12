@@ -99,7 +99,8 @@ async function generatePDF() {
     const canvas = await html2canvas(element, {
         scale: 2, // High resolution for quality
         useCORS: true,
-        logging: false
+        logging: false,
+        windowWidth: 1200 // Force desktop width to ensure 2-column layout on mobile
     });
 
     const imgData = canvas.toDataURL('image/jpeg', 0.98);
